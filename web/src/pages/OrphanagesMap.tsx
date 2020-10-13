@@ -1,9 +1,45 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
+import { FiPlus } from 'react-icons/fi'
+import { Map, TileLayer} from 'react-leaflet'
+import 'leaflet/dist/leaflet.css'
+
+import '../styles/pages/orphanages.map.css'
+import mapMakerImg from '../images/map-maker.svg';
 
 function OrphanagesMap(){
     return (
-        <h1>Hello, world!</h1>
+        <div id="page-map">
+            <aside>
+                <header>
+                    <img src={mapMakerImg} alt="happy"/>
+                    <h2>Escolha um orfanato no mapa</h2>
+                    <p>Muitas crianças estão
+esperando a sua visita :)</p>
+                </header>
+
+                <footer>
+                    <strong>Alagoas</strong>
+                    <span>Maceió</span>
+                </footer>
+            </aside>
+
+            <Map 
+                center={[-9.7505172,-35.8430151]}
+                zoom={10}
+                style={{ width: '100%', height: '100%'}} 
+            >
+
+                <TileLayer 
+                    url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png" 
+                />
+            </Map>
+
+            <Link to="" className="create-orphanage">
+                <FiPlus size={32} color="#fff"/>
+            </Link>
+        </div>
     );
 }
 
-export default OrphanagesMap;
+export default OrphanagesMap
